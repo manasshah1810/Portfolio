@@ -5,10 +5,12 @@ import LoadingScreen from "@/components/LoadingScreen";
 import MacDesktop from "@/components/MacDesktop";
 import PhoneLoader from "@/components/mobile/PhoneLoader";
 import PhoneUI from "@/components/mobile/PhoneUI";
+import ProfessionalView from "@/components/ProfessionalView";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [showProfessionalView, setShowProfessionalView] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -48,12 +50,17 @@ export default function Home() {
     return null;
   }
 
+  // Professional View Overlay
+  if (showProfessionalView) {
+    return <ProfessionalView onBack={() => setShowProfessionalView(false)} />;
+  }
+
   // Mobile experience
   if (isMobile) {
     if (loading) {
       return <PhoneLoader onComplete={handleLoadingComplete} />;
     }
-    return <PhoneUI />;
+    return <PhoneUI onToggleProfessional={() => setShowProfessionalView(true)} />;
   }
 
   // Desktop experience
@@ -61,5 +68,5 @@ export default function Home() {
     return <LoadingScreen onComplete={handleLoadingComplete} />;
   }
 
-  return <MacDesktop />;
+  return <MacDesktop onToggleProfessional={() => setShowProfessionalView(true)} />;
 }

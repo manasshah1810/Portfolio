@@ -75,7 +75,7 @@ const Typewriter: React.FC = () => {
     );
 };
 
-const PhoneUI = () => {
+const PhoneUI = ({ onToggleProfessional }: { onToggleProfessional?: () => void }) => {
     const [time, setTime] = useState("");
     const [activeApp, setActiveApp] = useState<string | null>(null);
     const [initialNoteId, setInitialNoteId] = useState<string | null>(null);
@@ -128,6 +128,7 @@ const PhoneUI = () => {
 
             <div className="phone-status-bar">
                 <div className="phone-time">{time || "09:41"}</div>
+                <button className="phone-professional-toggle" onClick={onToggleProfessional}>Switch to Professional View</button>
                 <div className="phone-status-icons">
                     {/* Cellular */}
                     <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor">

@@ -122,7 +122,7 @@ const Typewriter: React.FC = () => {
 };
 
 // ─── Main Component ──────────────────────────────────────────────
-const MacDesktop: React.FC = () => {
+const MacDesktop: React.FC<{ onToggleProfessional?: () => void }> = ({ onToggleProfessional }) => {
     const [time, setTime] = useState("");
     const [date, setDate] = useState("");
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -525,7 +525,7 @@ const MacDesktop: React.FC = () => {
                     <button className="menubar-item">Help</button>
                 </div>
                 <div className="menubar-right">
-                    <button className="menubar-item" style={{ cursor: 'pointer', fontWeight: 500 }}>Switch to Professional View</button>
+                    <button className="menubar-item" style={{ cursor: 'pointer', fontWeight: 500 }} onClick={onToggleProfessional}>Switch to Professional View</button>
                     {/* Battery */}
                     <span className="menubar-icon" title="98% Charged">
                         <svg width="22" height="12" viewBox="0 0 25 12" fill="none">
