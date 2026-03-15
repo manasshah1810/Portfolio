@@ -1236,34 +1236,6 @@ C:\\code\\vscode [main *] > `}
                 </main>
             </div>
 
-            {/* ── Status Bar ── */}
-            <footer className="vscode-statusbar">
-                <div className="statusbar-left">
-                    <div className="statusbar-item">
-                        <GitBranch size={14} />
-                        <span>main*</span>
-                    </div>
-                    <div className="statusbar-item">
-                        <RefreshCw size={14} />
-                    </div>
-                    <div className="statusbar-item">
-                        <XCircle size={14} /> 0
-                        <AlertTriangle size={14} /> 0
-                    </div>
-                </div>
-                <div className="statusbar-right">
-                    <span>Ln 1, Col 1</span>
-                    <span>Spaces: 4</span>
-                    <span>UTF-8</span>
-                    <span>CRLF</span>
-                    <div className="statusbar-item">
-                        {/* {} icon */}
-                        <Code2 size={14} />
-                        <span>Markdown</span>
-                    </div>
-                    <Bell size={14} />
-                </div>
-            </footer>
         </div>
     );
 };
