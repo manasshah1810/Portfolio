@@ -1,0 +1,121 @@
+.calculator {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #3c3c3c;
+    user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+}
+
+.calc-display {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 24px;
+    background: #3c3c3c;
+}
+
+.scientific .calc-display {
+    height: 140px;
+}
+
+.display-text {
+    color: white;
+    font-size: 84px;
+    font-weight: 200;
+    line-height: normal;
+    letter-spacing: -0.01em;
+}
+
+.scientific .display-text {
+    font-size: 96px;
+}
+
+.calc-keypad {
+    flex: 1;
+    display: grid;
+    gap: 1px;
+    background: #1c1c1c;
+    /* Border color */
+}
+
+/* Layout for Basic */
+.basic .calc-keypad {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+/* Layout for Scientific */
+.scientific .calc-keypad {
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+.key {
+    border: none;
+    font-size: 28px;
+    font-weight: 400;
+    color: white;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.1s ease;
+}
+
+.key:active {
+    filter: brightness(1.4);
+}
+
+.key.digit {
+    background: #5c5c5c;
+    font-size: 32px;
+}
+
+.key.function {
+    background: #444444;
+    font-size: 24px;
+}
+
+.key.operator {
+    background: #ff9501;
+    font-size: 36px;
+}
+
+.key.operator.active {
+    background: white;
+    color: #ff9501;
+}
+
+.key.sci {
+    background: #2e2e2e;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.key.sci-gray {
+    background: #444444 !important;
+}
+
+.key.zero {
+    grid-column: span 2;
+    justify-content: flex-start;
+    padding-left: 50px;
+}
+
+.scientific .key.zero {
+    grid-column: span 2;
+}
+
+/* Rounded corners as per image - very subtle */
+.key {
+    border-radius: 0px;
+    /* Grid gaps create the separation */
+}
+
+@media (max-width: 600px) {
+    .display-text {
+        font-size: 60px;
+    }
+}

@@ -1,0 +1,111 @@
+.mac-window {
+    position: absolute;
+    background: #2d2d2d;
+    /* Solid dark gray header */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 100;
+}
+
+.mac-window.maximized {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.mac-window.active {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.window-header {
+    height: 38px;
+    background: #3c3c3c;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    cursor: default;
+    position: relative;
+    user-select: none;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.1s;
+}
+
+.control svg {
+    width: 8px;
+    height: 8px;
+    opacity: 0;
+    fill: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.1s ease;
+}
+
+/* Show icons only when the control group is hovered */
+.window-controls:hover .control svg {
+    opacity: 1;
+}
+
+.control.close {
+    background: #ff5f56;
+}
+
+.control.minimize {
+    background: #ffbd2e;
+}
+
+.control.maximize {
+    background: #27c93f;
+}
+
+.control:active {
+    filter: brightness(0.8);
+}
+
+.window-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+.mac-window.active .window-title {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.window-content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.window-resizer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    cursor: nwse-resize;
+    z-index: 200;
+}

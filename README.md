@@ -1,30 +1,39 @@
-# Portfolio
+# Portfolio Starter
 
-## Description
-
-The Portfolio folder showcases my personal portfolio website. It is built using HTML, CSS, and JavaScript to highlight my skills, projects, and experiences. The website is hosted on Netlify and can be accessed at [http://manasshah.netlify.app](http://manasshah.netlify.app).
+This is a premium Portfolio starter built with [Next.js](https://nextjs.org), featuring a modern design system, glassmorphism, and a responsive layout.
 
 ## Features
 
-- **Responsive Design**: The portfolio website is designed to be responsive, ensuring optimal viewing experience across devices of all sizes.
-- **Project Showcase**: Showcases my projects with detailed descriptions, technologies used, and links to live demos or repositories.
-- **Skills Section**: Highlights my technical skills and proficiency in various programming languages, frameworks, and tools.
-- **Experience**: Provides information about my professional experience, including past internships, projects, and roles.
+- **Next.js 15 (App Router)**: The latest features of Next.js.
+- **Premium Design System**: Curated color palette and spacing.
+- **Vanilla CSS**: Maximum flexibility and control without Tailwind.
+- **Glassmorphism**: Modern frosted glass effects.
+- **Responsive Layout**: Works beautifully on all devices.
+- **SEO Optimized**: Pre-configured metadata and semantic HTML.
 
-## Technologies Used
+## Getting Started
 
-- HTML
-- CSS
-- JavaScript
+First, install the dependencies:
 
-## Hosting
+```bash
+npm install
+```
 
-The portfolio website is hosted on Netlify and can be accessed at [http://manasshah.netlify.app](http://manasshah.netlify.app).
+Then, run the development server:
 
-## Usage
+```bash
+npm run dev
+```
 
-Feel free to explore my portfolio website to learn more about me, my projects, and my skills. You can navigate through different sections to get a comprehensive understanding of my background and capabilities.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## License
+## Structure
 
-The content of this portfolio website is available under the [MIT License](LICENSE).
+- `src/app/globals.css`: Core design system and global variables.
+- `src/app/page.tsx`: Main landing page with hero and sections.
+- `src/app/page.css`: Styles specific to the landing page.
+- `src/app/layout.tsx`: Root layout with font and metadata configuration.
+
+## Customization
+
+You can customize the colors and spacing in `src/app/globals.css`. The project uses HSL variables for easy color manipulation.
