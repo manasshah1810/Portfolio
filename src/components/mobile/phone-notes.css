@@ -1,0 +1,300 @@
+/* ═══════════════════════════════════════════════════════════════
+   iOS Notes App – True Apple Aesthetic
+   ═══════════════════════════════════════════════════════════════ */
+
+.pn-overlay {
+    position: absolute;
+    inset: 0;
+    background: #FFFFFF;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    color: #000;
+    animation: pnIn 0.35s cubic-bezier(0.32, 1, 0.24, 1);
+    will-change: transform, border-radius;
+    overflow: hidden;
+    transform-origin: center bottom;
+}
+
+@keyframes pnIn {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header */
+.pn-header {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    z-index: 100;
+}
+
+.pn-back-btn {
+    color: #E6A519;
+    /* Notes Gold */
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 17px;
+    font-weight: 400;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: -8px;
+}
+
+.pn-back-btn span {
+    margin-left: -2px;
+}
+
+.pn-header-right {
+    display: flex;
+    gap: 20px;
+    color: #E6A519;
+}
+
+.pn-action-btn {
+    background: none;
+    border: none;
+    color: #E6A519;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* List View */
+.pn-list-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pn-main-title {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 10px 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+.pn-search-row {
+    margin-bottom: 20px;
+}
+
+.pn-search-box {
+    background: rgba(118, 118, 128, 0.12);
+    border-radius: 10px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 6px;
+    color: #8E8E93;
+}
+
+.pn-search-input {
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 17px;
+    color: #000;
+    outline: none;
+}
+
+.pn-notes-group {
+    background: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.pn-note-item {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pn-note-item:last-child {
+    border-bottom: none;
+}
+
+.pn-note-item:active {
+    background: #E5E5E7;
+}
+
+.pn-note-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000;
+}
+
+.pn-note-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 15px;
+    color: #8E8E93;
+}
+
+.pn-note-snippet {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Detail View (The Note) */
+.pn-detail-view {
+    position: absolute;
+    inset: 0;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    animation: pnSlideIn 0.3s cubic-bezier(0.32, 1, 0.24, 1);
+    z-index: 200;
+}
+
+@keyframes pnSlideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.pn-detail-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #000;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 100% 28px;
+}
+
+/* Markdown Specifics */
+.pn-md-view h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pn-md-view h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+}
+
+.pn-md-view h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 15px 0 8px;
+}
+
+.pn-md-view p {
+    margin-bottom: 15px;
+}
+
+.pn-md-view ul,
+.pn-md-view ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.pn-md-view li {
+    margin-bottom: 8px;
+}
+
+.pn-md-view code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.pn-md-view pre {
+    background: #f5f5f7;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 15px;
+}
+
+.pn-md-view hr {
+    border: none;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.pn-md-view blockquote {
+    border-left: 3px solid #E6A519;
+    padding-left: 15px;
+    color: #666;
+    margin: 15px 0;
+}
+
+/* Bottom Toolbar */
+.pn-toolbar {
+    height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(249, 249, 249, 0.94);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.pn-toolbar-btn {
+    background: none;
+    border: none;
+    color: #E6A519;
+    padding: 0;
+}
+
+.pn-notes-count {
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Home Indicator */
+.pn-home-indicator-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.pn-home-indicator {
+    width: 134px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 100px;
+}

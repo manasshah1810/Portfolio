@@ -1,0 +1,776 @@
+/* ═══════════════════════════════════════════════════════════════
+   iOS Photos App – True Apple Light Mode
+   ═══════════════════════════════════════════════════════════════ */
+
+.pg-overlay {
+    position: fixed;
+    inset: 0;
+    background: #F2F2F7;
+    /* iOS system gray 6 – the exact light bg */
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: #1C1C1E;
+    animation: pgIn 0.32s cubic-bezier(0.34, 1.1, 0.64, 1) forwards;
+    will-change: transform, opacity, border-radius;
+    overflow: hidden;
+    transform-origin: center bottom;
+}
+
+@keyframes pgIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ── Status Bar ─────────────────────────────────────────── */
+.pg-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px 2px;
+    flex-shrink: 0;
+    background: #F2F2F7;
+}
+
+.pg-status-time {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C1C1E;
+}
+
+.pg-status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ── Large iOS Title ─────────────────────────────────────── */
+.pg-topbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 2px 18px 8px;
+    flex-shrink: 0;
+    background: #F2F2F7;
+}
+
+.pg-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #1C1C1E;
+    margin: 0;
+    line-height: 1;
+}
+
+.pg-select-btn {
+    background: none;
+    border: none;
+    color: #007AFF;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 0 4px;
+    font-family: inherit;
+}
+
+/* ── Scrollable content ───────────────────────────────────── */
+.pg-content {
+    flex: 1;
+    overflow: hidden;
+    background: #F2F2F7;
+}
+
+.pg-scroll {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.pg-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── Month View ──────────────────────────────────────────── */
+.pg-month-section {
+    padding: 6px 16px 20px;
+}
+
+.pg-month-heading {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+.pg-month-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C1C1E;
+}
+
+.pg-month-chevron {
+    font-size: 22px;
+    color: #007AFF;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+.pg-memory-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 210px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.pg-memory-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pg-memory-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 14px 14px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+}
+
+.pg-memory-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 2px;
+}
+
+.pg-memory-date {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.pg-ellipsis-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.38);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -2px;
+    padding-bottom: 2px;
+    backdrop-filter: blur(4px);
+}
+
+.pg-ellipsis-dark {
+    position: relative;
+    top: auto;
+    right: auto;
+    background: rgba(0, 0, 0, 0.06);
+    color: #1C1C1E;
+}
+
+/* ── Days View ────────────────────────────────────────────── */
+.pg-day-section {
+    margin-bottom: 20px;
+}
+
+.pg-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 16px 8px;
+}
+
+.pg-day-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin: 0 0 1px;
+}
+
+.pg-day-sub {
+    font-size: 13px;
+    color: #8E8E93;
+    margin: 0;
+}
+
+.pg-day-hero {
+    position: relative;
+    margin: 0 0 2px;
+    height: 260px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pg-day-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pg-count-pill {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+}
+
+.pg-day-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.pg-day-thumb {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pg-day-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── All Photos Grid ─────────────────────────────────────── */
+.pg-grid-all {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.pg-grid-thumb {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    background: #E5E5EA;
+}
+
+.pg-grid-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Years Grid ──────────────────────────────────────────── */
+.pg-grid-years {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+}
+
+.pg-year-card {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pg-year-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.pg-year-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C1C1E;
+    padding: 6px 10px 2px;
+}
+
+.pg-year-count {
+    display: block;
+    font-size: 12px;
+    color: #8E8E93;
+    padding: 0 10px 8px;
+}
+
+/* ── Albums ──────────────────────────────────────────────── */
+.pg-albums-scroll {
+    padding-top: 4px;
+}
+
+.pg-albums-section-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1C1C1E;
+    padding: 8px 16px 10px;
+    margin: 0;
+}
+
+.pg-albums-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 0;
+    padding: 0 16px;
+}
+
+.pg-album-card {
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.pg-album-thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #E5E5EA;
+    margin-bottom: 5px;
+}
+
+.pg-album-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pg-album-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1C1C1E;
+    margin: 0 0 1px;
+}
+
+.pg-album-count {
+    font-size: 13px;
+    color: #8E8E93;
+    margin: 0;
+}
+
+/* ── Search ──────────────────────────────────────────────── */
+.pg-search-view {
+    padding: 0;
+}
+
+.pg-search-bar-wrap {
+    padding: 8px 16px 12px;
+}
+
+.pg-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(118, 118, 128, 0.12);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.pg-search-placeholder {
+    font-size: 17px;
+    color: #8E8E93;
+}
+
+.pg-search-hint {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1C1C1E;
+    padding: 0 16px 10px;
+    margin: 0;
+}
+
+/* ── Segmented Control ───────────────────────────────────── */
+.pg-segment-bar {
+    padding: 8px 16px 6px;
+    background: #F2F2F7;
+    flex-shrink: 0;
+}
+
+.pg-segment-pill {
+    display: flex;
+    background: rgba(118, 118, 128, 0.12);
+    border-radius: 9px;
+    padding: 2px;
+}
+
+.pg-seg-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    border-radius: 7px;
+    padding: 6px 2px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3C3C43;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.18s, color 0.18s;
+}
+
+.pg-seg-active {
+    background: white;
+    color: #1C1C1E;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Tab Bar ─────────────────────────────────────────────── */
+.pg-tabbar {
+    display: flex;
+    background: rgba(249, 249, 249, 0.94);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 8px 0 2px;
+    flex-shrink: 0;
+}
+
+.pg-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    padding: 4px 0;
+    font-family: inherit;
+}
+
+.pg-tab span {
+    font-size: 10px;
+    font-weight: 500;
+    color: #8E8E93;
+}
+
+.pg-tab-active span {
+    color: #007AFF;
+}
+
+/* ── Full-screen Photo Viewer ────────────────────────────── */
+.pg-viewer {
+    position: absolute;
+    inset: 0;
+    background: white;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    animation: pgFadeIn 0.2s ease;
+}
+
+@keyframes pgFadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.pg-viewer-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 52px 14px 10px;
+    border-bottom: 0.5px solid #E5E5EA;
+    background: white;
+    flex-shrink: 0;
+}
+
+.pg-viewer-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+}
+
+.pg-viewer-center {
+    text-align: center;
+    flex: 1;
+}
+
+.pg-viewer-date {
+    font-size: 13px;
+    color: #1C1C1E;
+    font-weight: 600;
+    margin: 0;
+}
+
+.pg-viewer-edit {
+    background: none;
+    border: none;
+    color: #007AFF;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.pg-viewer-image-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    overflow: hidden;
+}
+
+.pg-viewer-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease;
+}
+
+/* ── Viewer Animations ── */
+.pg-slide-in {
+    animation: pgSlideIn 0.22s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes pgSlideIn {
+    from {
+        transform: scale(0.96);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.pg-slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.pg-slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* ── Tap Zones for side navigation ── */
+.pg-viewer-prev-zone,
+.pg-viewer-next-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25%;
+    border: none;
+    background: transparent;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.pg-viewer-prev-zone {
+    left: 0;
+}
+
+.pg-viewer-next-zone {
+    right: 0;
+}
+
+
+/* Horizontal filmstrip */
+.pg-viewer-strip {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    background: #1C1C1E;
+    padding: 4px 0;
+    height: 60px;
+    flex-shrink: 0;
+    scrollbar-width: none;
+}
+
+.pg-viewer-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.pg-strip-thumb {
+    flex-shrink: 0;
+    width: 56px;
+    height: 52px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+
+.pg-strip-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pg-strip-active {
+    opacity: 1;
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+/* Action bar at bottom of viewer */
+.pg-viewer-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 20px 8px;
+    background: white;
+    border-top: 0.5px solid #E5E5EA;
+    flex-shrink: 0;
+}
+
+.pg-viewer-action {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    position: relative;
+    z-index: 60;
+}
+
+/* ── Info Sheet ── */
+.pg-info-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 90;
+    animation: pgFadeIn 0.3s ease;
+}
+
+.pg-info-sheet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 8px 16px 48px;
+    z-index: 100;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.pg-info-handle {
+    width: 36px;
+    height: 5px;
+    background: #E5E5EA;
+    border-radius: 3px;
+    margin: 4px auto 16px;
+}
+
+.pg-info-thumb-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pg-info-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.pg-info-thumb-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+
+.pg-info-thumb-sub {
+    font-size: 13px;
+    color: #8E8E93;
+    margin: 0;
+}
+
+.pg-info-divider {
+    height: 0.5px;
+    background: #E5E5EA;
+    margin: 12px 0;
+}
+
+.pg-info-row {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    align-items: flex-start;
+}
+
+.pg-info-label {
+    font-size: 12px;
+    color: #1C1C1E;
+    font-weight: 400;
+    margin: 0 0 1px;
+}
+
+.pg-info-value {
+    font-size: 15px;
+    color: #1C1C1E;
+    margin: 0;
+}
+
+.pg-info-desc {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #3A3A3C;
+    margin-top: 10px;
+}
+
+
+/* ── iOS Home Indicator ──────────────────────────────────── */
+.pg-home-indicator-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.pg-home-indicator {
+    width: 134px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 100px;
+}

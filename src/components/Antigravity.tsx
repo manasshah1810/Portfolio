@@ -147,7 +147,7 @@ const PROJECTS_DATA: ProjectData[] = [
     }
 ];
 
-const OPENROUTER_API_KEY = "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";
+const OPENROUTER_API_KEY = "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";
 const MODEL = "arcee-ai/trinity-mini:free";
 
 const Antigravity: React.FC = () => {
