@@ -68,11 +68,6 @@ const DOCK_APPS: DockApp[] = [
         href: "https://github.com/manasshah1810",
         color: "#24292e",
     },
-    {
-        name: "Vercel",
-        icon: <img src="/icons/Vercel.webp" alt="Vercel" />,
-        color: "#000000",
-    },
 ];
 
 // ─── Typewriter Effect ──────────────────────────────────────────
