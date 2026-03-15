@@ -249,6 +249,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 20;
 }
 
 .phone-search-button {
@@ -274,6 +275,7 @@
     right: 15px;
     display: flex;
     justify-content: center;
+    z-index: 100;
 }
 
 .phone-dock {
@@ -286,6 +288,10 @@
     gap: 15px;
     width: 100%;
     justify-content: space-around;
+}
+
+.phone-dock-app {
+    cursor: pointer;
 }
 
 .phone-dock-app .phone-app-icon-container {
